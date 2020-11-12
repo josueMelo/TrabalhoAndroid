@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "135866779005",
+    "firebase_url": "https://projetopdm-3d833.firebaseio.com",
+    "project_id": "projetopdm-3d833",
+    "storage_bucket": "projetopdm-3d833.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135866779005:android:d18b2f4a31734c167ff814",
+        "android_client_info": {
+          "package_name": "com.hjry.loja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135866779005-aopnj9kot72187j8ev0be4qq2tqlenq3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChtizEFfa7m4qKCgPHP2QtoKqk3IRW8g8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "135866779005-aopnj9kot72187j8ev0be4qq2tqlenq3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
