@@ -21,7 +21,7 @@ class ListaProdutoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_produto)
 
-        fab.setOnClickListener {
+        fabCadProduto.setOnClickListener {
             val intent = Intent(this, CadastroProdutoActivity::class.java)
             startActivity(intent)
         }
@@ -36,7 +36,7 @@ class ListaProdutoActivity : AppCompatActivity() {
 
     fun configureDatabase() {
 
-        database = FirebaseDatabase.getInstance().reference
+        database = FirebaseDatabase.getInstance().reference.child("produtos")
         database?.let {
             val options = FirebaseRecyclerOptions.Builder<Produto>()
                 .setQuery(it.child("produtos"), Produto::class.java)

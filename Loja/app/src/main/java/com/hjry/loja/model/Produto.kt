@@ -8,7 +8,7 @@ data class Produto(
     var desc: String? = null,
     var img: String? = null,
     var estoque: Int,
-    var preco: BigDecimal,
+    var preco: Double,
     var desconto: Int? = null
 
     )
