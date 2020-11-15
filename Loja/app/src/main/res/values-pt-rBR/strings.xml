@@ -2,10 +2,4 @@
 <resources>
     <string name="app_name">Loja</string>
     <string name="about">Sobre</string>
-    <string name="students">Contribuidores</string>
-    <string name="contact">Contato</string>
-    <string name="write_for_us">Escreva para nós</string>
-    <string name="body">Corpo</string>
-    <string name="send_email">Enviar</string>
-    <string name="Site">Website oficial</string>
 </resources>
