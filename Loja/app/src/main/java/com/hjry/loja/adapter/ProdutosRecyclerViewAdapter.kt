@@ -22,7 +22,6 @@ class ProdutosRecyclerViewAdapter(options: FirebaseRecyclerOptions<Produto>) :
 
     class ProdutoViewHolder(
         override val containerView: View,
-        snapshotArray: ObservableSnapshotArray<Produto>
     ) :
         RecyclerView.ViewHolder(containerView),
         LayoutContainer {
@@ -45,7 +44,7 @@ class ProdutosRecyclerViewAdapter(options: FirebaseRecyclerOptions<Produto>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProdutoViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val cardItem = inflater.inflate(R.layout.cartao_lista_produto, parent, false)
-        return ProdutoViewHolder(cardItem, snapshots)
+        return ProdutoViewHolder(cardItem)
     }
 
     override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int, produto: Produto) {

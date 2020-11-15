@@ -36,7 +36,7 @@ class ListaProdutoActivity : AppCompatActivity() {
 
     fun configureDatabase() {
 
-        database = FirebaseDatabase.getInstance().reference.child("produtos")
+        database = FirebaseDatabase.getInstance().reference
         database?.let {
             val options = FirebaseRecyclerOptions.Builder<Produto>()
                 .setQuery(it.child("produtos"), Produto::class.java)

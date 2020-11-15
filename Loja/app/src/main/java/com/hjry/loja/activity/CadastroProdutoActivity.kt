@@ -44,7 +44,7 @@ class CadastroProdutoActivity : AppCompatActivity() {
             estoque = etEstoque.text.toString().toInt(),
             desconto = etDesconto.text.toString().toInt()
         )
-        val novoProduto = database?.child("produtos")?.push()
+        val novoProduto = database?.push()
         prod.id = novoProduto?.key
         novoProduto?.setValue(prod)
     }
