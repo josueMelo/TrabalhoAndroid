@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
@@ -10,53 +10,69 @@
     android:background="#00FFFFFF"
     android:foregroundGravity="center"
     android:verticalScrollbarPosition="left"
-    app:layout_anchorGravity="center">
+    app:layout_anchorGravity="center" >
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-
-        android:layout_width="match_parent"
-        android:layout_height="53dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/ivBack"
-                android:layout_width="64dp"
-                android:layout_height="match_parent"
-                android:background="#00FFFFFF"
-                app:srcCompat="@drawable/back"
-                tools:srcCompat="@drawable/back" />
-
-            <TextView
-                android:id="@+id/txtActivity"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:autoText="true"
-                android:background="#00FFFFFF"
-                android:text="@string/about"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-                android:textColor="@color/design_default_color_background"
-                android:textSize="36sp"
-                android:verticalScrollbarPosition="defaultPosition" />
-        </LinearLayout>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/txtStudentsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/contributors"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
-        android:foregroundGravity="center"
-        app:layout_anchorGravity="center"
-        tools:context=".activity.AboutActivity">
+        <TextView
+            android:id="@+id/txtNomes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="5dp"
+            android:text="Higor Viana de Morais \nJosué Batista Matos Deschamps de Melo\nYgor Kaique de Souza Pinto" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/txtContactTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/contact"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="5dp"
+            android:clickable="true"
+            android:contextClickable="true"
+            android:text="hjrysenac@gmail.com"
+            android:autoLink="email"
+            android:linksClickable="true"
+            />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <TextView
+            android:id="@+id/txtSiteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/Site"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+        <TextView
+            android:id="@+id/txtSite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="5dp"
+            android:autoLink="web"
+            android:clickable="true"
+            android:contextClickable="true"
+            android:linksClickable="true"
+            android:text="https://www.sp.senac.br/" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

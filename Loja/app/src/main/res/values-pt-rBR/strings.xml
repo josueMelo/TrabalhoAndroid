@@ -2,4 +2,8 @@
 <resources>
     <string name="app_name">Loja</string>
     <string name="about">Sobre</string>
+    <string name="Site">Site oficial</string>
+    <string name="contact">Contato</string>
+    <string name="contributors">Contribuidores</string>
+    <string name="send_email">Enviar email</string>
 </resources>

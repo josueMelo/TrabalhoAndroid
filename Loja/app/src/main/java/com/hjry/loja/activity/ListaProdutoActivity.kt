@@ -14,26 +14,31 @@ import kotlinx.android.synthetic.main.activity_lista_produto.*
 
 class ListaProdutoActivity : AppCompatActivity() {
 
-    var adapter: ProdutosRecyclerViewAdapter? = null
+    /*var adapter: ProdutosRecyclerViewAdapter? = null
     var database: DatabaseReference? = null
-
+    */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_produto)
+
+        btnAbout.setOnClickListener {
+            val intent = Intent(this, AboutActivity::class.java)
+            startActivity(intent)
+        }
 
         fabCadProduto.setOnClickListener {
             val intent = Intent(this, CadastroProdutoActivity::class.java)
             startActivity(intent)
         }
 
-        configureDatabase()
+        /*configureDatabase()*/
     }
 
 
     fun atualizaProdutos() {
 
     }
-
+    /*
     fun configureDatabase() {
 
         database = FirebaseDatabase.getInstance().reference
@@ -57,4 +62,5 @@ class ListaProdutoActivity : AppCompatActivity() {
         super.onResume()
         adapter?.startListening()
     }
+    */
 }
