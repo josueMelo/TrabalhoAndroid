@@ -1,7 +1,5 @@
 package com.hjry.loja.model
 
-import java.math.BigDecimal
-
 data class Produto(
     var id: String? = null,
     var nome: String,
@@ -11,4 +9,10 @@ data class Produto(
     var preco: Double,
     var desconto: Int? = null
 
-)
+) {
+    constructor() : this(
+        nome = "",
+        estoque = 0,
+        preco = 0.0,
+    )
+}
