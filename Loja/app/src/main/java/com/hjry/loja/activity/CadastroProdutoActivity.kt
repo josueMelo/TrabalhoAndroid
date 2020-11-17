@@ -32,6 +32,10 @@ class CadastroProdutoActivity : AppCompatActivity() {
             val intent = Intent(this, ListaProdutoActivity::class.java)
             startActivity(intent)
         }
+        fabDel.setOnClickListener {
+            val i = Intent(this,ListaProdutoActivity::class.java)
+            startActivity(i)
+        }
 
     }
 
@@ -44,6 +48,7 @@ class CadastroProdutoActivity : AppCompatActivity() {
             estoque = etEstoque.text.toString().toInt(),
             desconto = etDesconto.text.toString().toInt()
         )
+        if(prod.nome == null && prod.estoque == null && prod.preco == null && prod.desconto == null && prod.desc == null) return
         val novoProduto = database?.push()
         prod.id = novoProduto?.key
         novoProduto?.setValue(prod)
