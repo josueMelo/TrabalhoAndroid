@@ -3,6 +3,9 @@ package com.hjry.loja.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.DatabaseReference
@@ -21,10 +24,6 @@ class ListaProdutoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_produto)
 
-        btnAbout.setOnClickListener {
-            val intent = Intent(this, AboutActivity::class.java)
-            startActivity(intent)
-        }
 
         fabCadProduto.setOnClickListener {
             val intent = Intent(this, CadastroProdutoActivity::class.java)
@@ -32,6 +31,27 @@ class ListaProdutoActivity : AppCompatActivity() {
         }
 
         configureDatabase()
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here.
+        val id = item.getItemId()
+
+        if (id == R.id.about) {
+            val intent = Intent(this, AboutActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        return super.onOptionsItemSelected(item)
+
     }
 
 
