@@ -26,11 +26,6 @@ class ListaProdutoActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        fabCadProduto.setOnClickListener {
-            val intent = Intent(this, CadastroProdutoActivity::class.java)
-            startActivity(intent)
-        }
-
         configureDatabase()
     }
 
