@@ -3,6 +3,11 @@ package com.hjry.loja.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.DatabaseReference
@@ -29,6 +34,30 @@ class ListaProdutoActivity : AppCompatActivity() {
         configureDatabase()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu_lista_produto, menu)
+        val menuitem = menu?.findItem(R.id.btnBuscaProdutoMenu) as MenuItem
+        val btnBusca = menuitem.actionView as SearchView
+        btnBusca.queryHint = "Nome do Produto"
+
+        btnBusca.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Toast.makeText(this@ListaProdutoActivity, "submit: $query", Toast.LENGTH_SHORT)
+                    .show()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Toast.makeText(this@ListaProdutoActivity, "change: $newText", Toast.LENGTH_SHORT)
+                    .show()
+                return true
+            }
+
+        })
+
+        return true
+    }
 
     fun configureDatabase() {
 
