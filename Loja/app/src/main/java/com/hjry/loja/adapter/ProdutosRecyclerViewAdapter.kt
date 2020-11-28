@@ -20,7 +20,7 @@ import java.text.NumberFormat
 
 //todo 40m
 class ProdutosRecyclerViewAdapter(options: FirebaseRecyclerOptions<Produto>) :
-    FirebaseRecyclerAdapter<Produto, ProdutosRecyclerViewAdapter.ProdutoViewHolder>(options), Filterable {
+    FirebaseRecyclerAdapter<Produto, ProdutosRecyclerViewAdapter.ProdutoViewHolder>(options) {
 
     class ProdutoViewHolder(
         override val containerView: View,
@@ -52,8 +52,4 @@ class ProdutosRecyclerViewAdapter(options: FirebaseRecyclerOptions<Produto>) :
     override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int, produto: Produto) {
         holder.bind(produto)
     }
-
-    override fun getFilter(): Filter {
-    }
-
 }

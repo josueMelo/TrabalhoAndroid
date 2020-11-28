@@ -3,6 +3,7 @@ package com.hjry.loja.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -61,10 +62,11 @@ class ListaProdutoActivity : AppCompatActivity() {
 
     fun configureDatabase() {
 
-        database = FirebaseDatabase.getInstance().reference
+        database = FirebaseDatabase.getInstance().reference.child("produtos")
+        Log.d("debug", "" + database)
         database?.let {
             val options = FirebaseRecyclerOptions.Builder<Produto>()
-                .setQuery(it.child("produtos"), Produto::class.java)
+                .setQuery(it, Produto::class.java)
                 .build()
             adapter = ProdutosRecyclerViewAdapter(options)
             recyclerView.layoutManager = LinearLayoutManager(this)
