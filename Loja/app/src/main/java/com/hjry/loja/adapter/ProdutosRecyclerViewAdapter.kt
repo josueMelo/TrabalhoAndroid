@@ -3,6 +3,8 @@ package com.hjry.loja.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -50,5 +52,4 @@ class ProdutosRecyclerViewAdapter(options: FirebaseRecyclerOptions<Produto>) :
     override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int, produto: Produto) {
         holder.bind(produto)
     }
-
 }

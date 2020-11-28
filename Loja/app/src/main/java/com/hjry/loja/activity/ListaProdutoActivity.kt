@@ -3,8 +3,11 @@ package com.hjry.loja.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerOptions
@@ -25,14 +28,33 @@ class ListaProdutoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_lista_produto)
 
 
-        fabCadProduto.setOnClickListener {
-            val intent = Intent(this, CadastroProdutoActivity::class.java)
-            startActivity(intent)
-        }
-
         configureDatabase()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu_lista_produto, menu)
+        val menuitem = menu?.findItem(R.id.btnBuscaProdutoMenu) as MenuItem
+        val btnBusca = menuitem.actionView as SearchView
+        btnBusca.queryHint = "Nome do Produto"
+
+        btnBusca.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Toast.makeText(this@ListaProdutoActivity, "submit: $query", Toast.LENGTH_SHORT)
+                    .show()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Toast.makeText(this@ListaProdutoActivity, "change: $newText", Toast.LENGTH_SHORT)
+                    .show()
+                return true
+            }
+
+        })
+
+        return true
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -57,10 +79,11 @@ class ListaProdutoActivity : AppCompatActivity() {
 
     fun configureDatabase() {
 
-        database = FirebaseDatabase.getInstance().reference
+        database = FirebaseDatabase.getInstance().reference.child("produtos")
+        Log.d("debug", "" + database)
         database?.let {
             val options = FirebaseRecyclerOptions.Builder<Produto>()
-                .setQuery(it.child("produtos"), Produto::class.java)
+                .setQuery(it, Produto::class.java)
                 .build()
             adapter = ProdutosRecyclerViewAdapter(options)
             recyclerView.layoutManager = LinearLayoutManager(this)
