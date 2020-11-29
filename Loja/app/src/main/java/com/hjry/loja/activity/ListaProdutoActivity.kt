@@ -28,7 +28,7 @@ class ListaProdutoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_lista_produto)
 
 
-        configureDatabase()
+        configureDatabase(null)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -38,16 +38,16 @@ class ListaProdutoActivity : AppCompatActivity() {
         val btnBusca = menuitem.actionView as SearchView
         btnBusca.queryHint = "Nome do Produto"
 
-        btnBusca.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        btnBusca.setOnQueryTextListener(object
+            : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                Toast.makeText(this@ListaProdutoActivity, "submit: $query", Toast.LENGTH_SHORT)
-                    .show()
+                btnBusca.clearFocus()
+                configureDatabase(query)
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                Toast.makeText(this@ListaProdutoActivity, "change: $newText", Toast.LENGTH_SHORT)
-                    .show()
+                configureDatabase(newText)
                 return true
             }
 
@@ -71,13 +71,13 @@ class ListaProdutoActivity : AppCompatActivity() {
     }
 
 
-    fun configureDatabase() {
+    fun configureDatabase(busca: String?) {
 
         database = FirebaseDatabase.getInstance().reference.child("produtos")
         Log.d("debug", "" + database)
         database?.let {
             val options = FirebaseRecyclerOptions.Builder<Produto>()
-                .setQuery(it, Produto::class.java)
+                .setQuery(it.orderByChild("nome").startAt(busca).endAt(busca+"\uf8ff"), Produto::class.java)
                 .build()
             adapter = ProdutosRecyclerViewAdapter(options)
             recyclerView.layoutManager = LinearLayoutManager(this)
