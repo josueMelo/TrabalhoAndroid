@@ -37,7 +37,7 @@ class ProdutosRecyclerViewAdapter(options: FirebaseRecyclerOptions<Produto>) :
             containerView.txtPreco.text = formatter.format(produto.preco)
 
             containerView.setOnClickListener {
-                Toast.makeText(containerView.context, "Clicou ", Toast.LENGTH_SHORT).show()
+                Toast.makeText(containerView.context, "Clicou no " + containerView.txtNome.text, Toast.LENGTH_SHORT).show()
             }
         }
 

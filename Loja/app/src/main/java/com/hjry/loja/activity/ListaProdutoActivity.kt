@@ -28,7 +28,7 @@ class ListaProdutoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_lista_produto)
 
 
-        configureDatabase(null)
+        configureDatabase("")
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -75,9 +75,14 @@ class ListaProdutoActivity : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance().reference.child("produtos")
         Log.d("debug", "" + database)
+
+
         database?.let {
             val options = FirebaseRecyclerOptions.Builder<Produto>()
-                .setQuery(it.orderByChild("nome").startAt(busca).endAt(busca+"\uf8ff"), Produto::class.java)
+                .setQuery(
+                    it.orderByChild("nome").startAt(busca).endAt(busca + "\uf8ff"),
+                    Produto::class.java
+                )
                 .build()
             adapter = ProdutosRecyclerViewAdapter(options)
             recyclerView.layoutManager = LinearLayoutManager(this)
