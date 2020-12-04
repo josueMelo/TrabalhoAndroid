@@ -14,6 +14,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.firebase.ui.database.ObservableSnapshotArray
 import com.hjry.loja.R
 import com.hjry.loja.model.Produto
+import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.cartao_lista_produto.view.*
 import java.text.NumberFormat
@@ -35,6 +36,7 @@ class ProdutosRecyclerViewAdapter(options: FirebaseRecyclerOptions<Produto>) :
             containerView.txtNome.text = produto.nome
             containerView.txtDesc.text = produto.desc
             containerView.txtPreco.text = formatter.format(produto.preco)
+            Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/projetopdm-3d833.appspot.com/o/photos%2F"+  produto.id + ".jpg?alt=media").into( containerView.image)
 
             containerView.setOnClickListener {
                 Toast.makeText(containerView.context, "Clicou no " + containerView.txtNome.text, Toast.LENGTH_SHORT).show()
