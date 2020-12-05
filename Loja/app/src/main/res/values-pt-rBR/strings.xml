@@ -6,4 +6,12 @@
     <string name="contact">Contato</string>
     <string name="contributors">Contribuidores</string>
     <string name="send_email">Enviar email</string>
+    <string name="Open">Abrir Menu</string>
+    <string name="Close">Fechar Menu</string>
+    <string name="Comp">Informatica</string>
+    <string name="Office">Papelaria</string>
+    <string name="HomeA">Eletrodomésticos</string>
+    <string name="Cell">Celulares</string>
+    <string name="TV">TV</string>
+    <string name="NameProduct">Nome do Produto</string>
 </resources>

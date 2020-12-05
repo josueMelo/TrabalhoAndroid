@@ -2,6 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/about"
-        android:title="@string/about" />
+        android:id="@+id/Cell"
+        android:title="@string/Cell" />
+    <item
+        android:id="@+id/Comp"
+        android:title="@string/Comp" />
+    <item
+        android:id="@+id/HomeA"
+        android:title="@string/HomeA" />
+    <item
+        android:id="@+id/Office"
+        android:title="@string/Office" />
+    <item
+        android:id="@+id/TV"
+        android:title="@string/TV" />
 </menu>
