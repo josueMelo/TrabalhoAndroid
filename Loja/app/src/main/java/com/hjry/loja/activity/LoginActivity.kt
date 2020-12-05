@@ -9,7 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.hjry.loja.R
 
-class LoginActivity : AppCompatActivity() {
+class  LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -21,15 +21,9 @@ class LoginActivity : AppCompatActivity() {
                     .createSignInIntentBuilder()
                     .setAvailableProviders(providers)
                     .build(), 0
+
             )
         }
-        else {
-            Toast.makeText(this, "Autenticado", Toast.LENGTH_LONG).show()
-            val intent = Intent(this, ListaProdutoActivity::class.java)
-            startActivity(intent)
-        }
-
-
     }
 
 
