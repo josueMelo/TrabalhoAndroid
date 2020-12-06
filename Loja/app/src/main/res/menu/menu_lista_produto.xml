@@ -1,4 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/btnCarrinho"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:orderInCategory="500"
+        android:title="Carrinho"
+        app:showAsAction="collapseActionView|ifRoom" />
     <item android:id="@+id/btnBuscaProdutoMenu" android:title="Buscar Produto"
         android:orderInCategory="500" android:icon="@android:drawable/ic_menu_search"
         app:showAsAction="always|collapseActionView"
