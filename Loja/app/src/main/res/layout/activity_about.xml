@@ -28,10 +28,10 @@
         <TextView
             android:id="@+id/txtNomes"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="85dp"
             android:layout_margin="10dp"
             android:layout_marginLeft="5dp"
-            android:text="Higor Viana de Morais \nJosué Batista Matos Deschamps de Melo\nYgor Kaique de Souza Pinto" />
+            android:text="Higor Viana de Morais \nJosué Batista Matos Deschamps de Melo\nYgor Kaique de Souza Pinto\nRenan Tavares" />
 
         <TextView
             android:id="@+id/txtContactTitle"
