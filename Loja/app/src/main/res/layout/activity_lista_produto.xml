@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/DL"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:backgroundTint="#673AB7"
     tools:context=".activity.ListaProdutoActivity">
@@ -18,15 +18,17 @@
     <FrameLayout
         android:id="@+id/fragContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/NV"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
         app:headerLayout="@layout/menu_cabecalho"
-        app:menu="@menu/menu">
+        android:layout_gravity="start"
+        app:menu="@menu/menu" >
 
     </com.google.android.material.navigation.NavigationView>
 
