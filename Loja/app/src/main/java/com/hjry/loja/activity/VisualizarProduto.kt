@@ -11,12 +11,6 @@ import java.text.NumberFormat
 class VisualizarProduto : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val actionBar =supportActionBar
-        actionBar!!.title = resources.getString(R.string.Product)
-        actionBar.setDisplayHomeAsUpEnabled(true)
-
-
         setContentView(R.layout.activity_visualizar_produto)
 
         val formatter = NumberFormat.getCurrencyInstance()
@@ -35,9 +29,5 @@ class VisualizarProduto : AppCompatActivity() {
         Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/projetopdm-3d833.appspot.com/o/photos%2F" + id + ".jpg?alt=media").into(
             imageProduto
         )
-    }
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
     }
 }

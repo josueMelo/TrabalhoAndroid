@@ -5,7 +5,5 @@
         app:actionViewClass="android.widget.SearchView" />
     <item
         android:id="@+id/about"
-        android:icon="@drawable/about_ico"
-        android:menuCategory="container"
         android:title="@string/about" />
 </menu>

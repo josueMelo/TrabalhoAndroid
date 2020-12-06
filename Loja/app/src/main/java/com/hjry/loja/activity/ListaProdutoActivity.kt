@@ -9,7 +9,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -52,7 +51,6 @@ class ListaProdutoActivity : AppCompatActivity() {
         }
 
 
-
         configureDatabase("")
     }
 
@@ -60,8 +58,6 @@ class ListaProdutoActivity : AppCompatActivity() {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.menu_lista_produto, menu)
         val menuitem = menu?.findItem(R.id.btnBuscaProdutoMenu) as MenuItem
-        val menuIte = menu?.findItem(R.id.about) as MenuItem
-
         val btnBusca = menuitem.actionView as SearchView
 
         btnBusca.queryHint = getString(R.string.NameProduct)
@@ -80,12 +76,6 @@ class ListaProdutoActivity : AppCompatActivity() {
             }
 
         })
-
-        menuIte.setOnMenuItemClickListener {
-            val i = Intent(this,AboutActivity::class.java)
-            startActivity(i)
-            true
-        }
 
 
         return true
