@@ -14,4 +14,6 @@
     <string name="Cell">Celulares</string>
     <string name="TV">TV</string>
     <string name="NameProduct">Nome do Produto</string>
+    <string name="Product">Produto</string>
+    <string name="All">Todos</string>
 </resources>

@@ -13,5 +13,7 @@
     <string name="Cell">Cell Phones</string>
     <string name="TV">TV</string>
     <string name="NameProduct">\"Name Product\"</string>
+    <string name="Product">Product</string>
+    <string name="All">All</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>
