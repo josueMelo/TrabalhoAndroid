@@ -26,15 +26,34 @@ class VisualizarProduto : AppCompatActivity() {
         val desc = intent.getStringExtra("desc")
         val qtd = intent.getStringExtra("estoque")
         val preco = intent.getStringExtra("preco")
+        val desconto = intent.getStringExtra("desconto")
+        var i = 1
 
-
+        etQnt.setText(i.toString())
         txtNomeVisualizar.text = title
         textDescProduto.text = desc
         txtPrecoVisualizar.text = formatter.format(preco!!.toFloat())
+        txtDescontoVisualizar.text = "desconto"
         txtQtd.text = qtd
         Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/projetopdm-3d833.appspot.com/o/photos%2F" + id + ".jpg?alt=media").into(
             imageProduto
         )
+
+
+        btnMinus.setOnClickListener {
+            if (Integer.parseInt(etQnt.text.toString()) > 1) {
+                i = Integer.parseInt(etQnt.text.toString()) - 1
+                etQnt.setText((i).toString())
+                btnAdd.setText("Add R$" + (Integer.parseInt(etQnt.text.toString()) * preco.toFloat()))
+            }
+        }
+        btnPlus.setOnClickListener {
+            if (Integer.parseInt(etQnt.text.toString()) < 100) {
+                i = Integer.parseInt(etQnt.text.toString()) + 1
+                etQnt.setText((i).toString())
+                btnAdd.setText("Add R$" + (Integer.parseInt(etQnt.text.toString()) * preco.toFloat()))
+            }
+        }
     }
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

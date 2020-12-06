@@ -42,7 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="TextView"
-            android:textAlignment="textEnd" />
+            android:textAlignment="textEnd"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
