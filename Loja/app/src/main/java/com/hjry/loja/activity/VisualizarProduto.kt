@@ -35,7 +35,7 @@ class VisualizarProduto : AppCompatActivity() {
         txtPrecoVisualizar.text = formatter.format(preco!!.toFloat())
         txtDescontoVisualizar.text = "desconto"
         txtQtd.text = estoque
-        Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/projetopdm-3d833.appspot.com/o/photos%2F" + id + ".jpg?alt=media").into(
+        Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/projetopdm-3d833.appspot.com/o/photos%2F$id.jpg?alt=media").into(
             imageProduto
         )
 
