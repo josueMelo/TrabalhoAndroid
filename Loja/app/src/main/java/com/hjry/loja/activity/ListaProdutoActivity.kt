@@ -37,18 +37,18 @@ class ListaProdutoActivity : AppCompatActivity() {
         }
         NV.setNavigationItemSelectedListener {
             DL.closeDrawers()
-            if (it.itemId == 1) {
-                val frag = Nav.newInstance("", "")
-                supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
-                Toast.makeText(this, "Ola $it", Toast.LENGTH_SHORT).show()
-                true
+            val frag = Nav.newInstance("", "")
+            supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+
+            if (it.title == "Todos") {
+                configureDatabase("nome", "")
+            } else {
+                configureDatabase("categoria", it.title.toString());
             }
+
             false
         }
-
-
-
-        configureDatabase("")
+        configureDatabase("nome", "")
         buscarCategorias()
     }
 
@@ -66,12 +66,12 @@ class ListaProdutoActivity : AppCompatActivity() {
             : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 btnBusca.clearFocus()
-                configureDatabase(query)
+                configureDatabase("nome", query)
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                configureDatabase(newText)
+                configureDatabase("nome", newText)
                 return true
             }
 
@@ -136,7 +136,7 @@ class ListaProdutoActivity : AppCompatActivity() {
     }
 
 
-    fun configureDatabase(busca: String?) {
+    fun configureDatabase(tpBusca: String?, busca: String?) {
 
         database = FirebaseDatabase.getInstance().reference.child("produtos")
 
@@ -144,7 +144,7 @@ class ListaProdutoActivity : AppCompatActivity() {
         database?.let {
             val options = FirebaseRecyclerOptions.Builder<Produto>()
                 .setQuery(
-                    it.orderByChild("nome").startAt(busca).endAt(busca + "\uf8ff"),
+                    it.orderByChild(tpBusca!!).startAt(busca).endAt(busca + "\uf8ff"),
                     Produto::class.java
                 )
                 .build()
