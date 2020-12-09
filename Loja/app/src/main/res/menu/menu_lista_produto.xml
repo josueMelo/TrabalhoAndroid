@@ -14,4 +14,9 @@
         android:icon="@drawable/about_ico"
         android:menuCategory="container"
         android:title="@string/about" />
+    <item
+        android:id="@+id/btSair"
+        android:icon="@drawable/about_ico"
+        android:menuCategory="container"
+        android:title="Sair" />
 </menu>

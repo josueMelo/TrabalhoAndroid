@@ -40,6 +40,7 @@ class VisualizarProdutoActivity : AppCompatActivity() {
 
         var i = 1
 
+        btnAdd.text = "Add " + formatter.format(preco!!.toFloat())
         etQnt.setText(i.toString())
         txtNomeVisualizar.text = title
         txtDescProduto.text = desc
@@ -50,29 +51,36 @@ class VisualizarProdutoActivity : AppCompatActivity() {
             imageProduto
         )
 
-
-        btnMinus.setOnClickListener {
-            if (Integer.parseInt(etQnt.text.toString()) > 1) {
-                i = Integer.parseInt(etQnt.text.toString()) - 1
-                etQnt.setText((i).toString())
-                btnAdd.text = "Add R$" + (Integer.parseInt(etQnt.text.toString()) * preco.toFloat())
-            }
-        }
-        btnPlus.setOnClickListener {
-            if (Integer.parseInt(etQnt.text.toString()) < Integer.parseInt(estoque)) {
-                i = Integer.parseInt(etQnt.text.toString()) + 1
-                etQnt.setText((i).toString())
-                btnAdd.setText("Add R$" + (Integer.parseInt(etQnt.text.toString()) * preco.toFloat()))
-            }
+        if(Integer.parseInt(estoque) < 1) {
+            btnMinus.isEnabled = false
+            btnPlus.isEnabled = false
+            btnAdd.isEnabled = false
         }
 
-        btnAdd.setOnClickListener {
-            etQnt.text?.let {
-                configureDatabase(it.toString(), id)
-                onBackPressed()
+            btnMinus.setOnClickListener {
+                if (Integer.parseInt(etQnt.text.toString()) > 1) {
+                    i = Integer.parseInt(etQnt.text.toString()) - 1
+                    etQnt.setText((i).toString())
+                    btnAdd.text =
+                        "Add " + formatter.format(Integer.parseInt(etQnt.text.toString()) * preco!!.toFloat())
+                }
+            }
+            btnPlus.setOnClickListener {
+                if (Integer.parseInt(etQnt.text.toString()) < Integer.parseInt(estoque)) {
+                    i = Integer.parseInt(etQnt.text.toString()) + 1
+                    etQnt.setText((i).toString())
+                    btnAdd.text =
+                        "Add " + formatter.format(Integer.parseInt(etQnt.text.toString()) * preco!!.toFloat())
+                }
             }
 
-        }
+            btnAdd.setOnClickListener {
+                etQnt.text?.let {
+                    configureDatabase(it.toString(), id)
+                    onBackPressed()
+                }
+            }
+
     }
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

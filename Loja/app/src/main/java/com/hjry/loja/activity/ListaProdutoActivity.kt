@@ -21,13 +21,16 @@ import kotlinx.android.synthetic.main.activity_lista_produto.*
 
 class ListaProdutoActivity : AppCompatActivity() {
 
+    var auth: FirebaseAuth? = null;
     var adapter: ProdutosRecyclerViewAdapter? = null
     var database: DatabaseReference? = null
     var toggle: ActionBarDrawerToggle? = null
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_produto)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        auth = FirebaseAuth.getInstance()
         toggle = ActionBarDrawerToggle(
             this, DL,
             R.string.Open, R.string.Close
@@ -97,7 +100,12 @@ class ListaProdutoActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-
+        if(item.itemId==R.id.btSair) {
+            auth?.signOut()
+            val intent = Intent(this, MakeLoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         toggle?.let {
             return it.onOptionsItemSelected(item)
         }

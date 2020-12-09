@@ -25,6 +25,7 @@ class MakeLoginActivity : AppCompatActivity() {
             Toast.makeText(this, "Autenticado", Toast.LENGTH_LONG).show()
             val intent = Intent(this, ListaProdutoActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
