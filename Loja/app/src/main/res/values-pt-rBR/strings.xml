@@ -17,4 +17,5 @@
     <string name="Product">Produto</string>
     <string name="All">Todos</string>
     <string name="add">Add</string>
+    <string name="Logout">Sair</string>
 </resources>

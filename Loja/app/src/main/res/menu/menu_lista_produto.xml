@@ -18,5 +18,5 @@
         android:id="@+id/btSair"
         android:icon="@drawable/about_ico"
         android:menuCategory="container"
-        android:title="Sair" />
+        android:title="@string/Logout" />
 </menu>

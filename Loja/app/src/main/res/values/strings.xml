@@ -16,5 +16,6 @@
     <string name="Product">Product</string>
     <string name="All">All</string>
     <string name="add">Add</string>
+    <string name="Logout">Logout</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>
