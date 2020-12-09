@@ -6,19 +6,24 @@ import android.util.Log
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.hjry.loja.R
 import com.hjry.loja.adapter.CarrinhoRecyclerViewAdapter
 import com.hjry.loja.adapter.ProdutosRecyclerViewAdapter
+import com.hjry.loja.model.CarrinhoProduto
 import com.hjry.loja.model.Produto
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_carrinho.*
 import kotlinx.android.synthetic.main.activity_lista_produto.*
+import kotlinx.android.synthetic.main.cartao_lista_carrinho.view.*
 
 class CarrinhoActivity : AppCompatActivity() {
 
     var adapter: CarrinhoRecyclerViewAdapter? = null
-    var database: DatabaseReference? = null
+    var databaseUser: DatabaseReference? = null
+    var databaseProdutos: DatabaseReference? = null
     var toggle: ActionBarDrawerToggle? = null
     var prod: Produto? = null
 
@@ -88,21 +93,15 @@ class CarrinhoActivity : AppCompatActivity() {
 //
     fun configureDatabase(busca: String?) {
 
-        database = FirebaseDatabase.getInstance().reference.child("produtos")
-        Log.d("debug", "" + database)
+        databaseUser = FirebaseDatabase.getInstance().reference.child("user")
 
 
-        database?.let {
-            val options = FirebaseRecyclerOptions.Builder<Produto>()
-                .setQuery(
-                    it.orderByChild("nome").startAt(busca).endAt(busca + "\uf8ff"),
-                    Produto::class.java
-                )
-                .build()
-            adapter = CarrinhoRecyclerViewAdapter(options)
-            RVCarrinho.layoutManager = LinearLayoutManager(this)
-            RVCarrinho.adapter = adapter
-            adapter?.startListening()
+        Log.d("debug", "" + databaseUser)
+
+
+        databaseUser?.let {
+
+
         }
     }
 

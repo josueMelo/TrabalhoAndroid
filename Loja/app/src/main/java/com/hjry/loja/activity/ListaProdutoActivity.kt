@@ -6,17 +6,18 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.hjry.loja.Nav
 import com.hjry.loja.R
 import com.hjry.loja.adapter.ProdutosRecyclerViewAdapter
 import com.hjry.loja.model.Produto
 import kotlinx.android.synthetic.main.activity_lista_produto.*
+
 
 class ListaProdutoActivity : AppCompatActivity() {
 
@@ -57,6 +58,7 @@ class ListaProdutoActivity : AppCompatActivity() {
         inflater.inflate(R.menu.menu_lista_produto, menu)
         val menuitem = menu?.findItem(R.id.btnBuscaProdutoMenu) as MenuItem
         val menuIte = menu?.findItem(R.id.about) as MenuItem
+        val menuCar = menu?.findItem(R.id.btnCarrinho)
 
         val btnBusca = menuitem.actionView as SearchView
 
@@ -79,6 +81,11 @@ class ListaProdutoActivity : AppCompatActivity() {
 
         menuIte.setOnMenuItemClickListener {
             val i = Intent(this, AboutActivity::class.java)
+            startActivity(i)
+            true
+        }
+        menuCar.setOnMenuItemClickListener {
+            val i = Intent(this, CarrinhoActivity::class.java)
             startActivity(i)
             true
         }
@@ -139,6 +146,7 @@ class ListaProdutoActivity : AppCompatActivity() {
     fun configureDatabase(tpBusca: String?, busca: String?) {
 
         database = FirebaseDatabase.getInstance().reference.child("produtos")
+
 
 
         database?.let {

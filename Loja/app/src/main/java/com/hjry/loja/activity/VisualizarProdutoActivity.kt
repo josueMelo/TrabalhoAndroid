@@ -3,13 +3,26 @@ package com.hjry.loja.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.hjry.loja.R
+import com.hjry.loja.adapter.CarrinhoRecyclerViewAdapter
+import com.hjry.loja.model.CarrinhoProduto
+import com.hjry.loja.model.Produto
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_carrinho.*
 import kotlinx.android.synthetic.main.activity_visualizar_produto.*
 import kotlinx.android.synthetic.main.cartao_lista_produto.view.*
 import java.text.NumberFormat
 
 class VisualizarProdutoActivity : AppCompatActivity() {
+    var database: DatabaseReference? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -58,13 +71,36 @@ class VisualizarProdutoActivity : AppCompatActivity() {
         }
 
         btnAdd.setOnClickListener {
-            val intent = Intent(this, CarrinhoActivity::class.java)
-//            intent.putExtra("produto", produto)
-            startActivity(intent)
+            etQnt.text?.let {
+                configureDatabase(it.toString(),id)
+                onBackPressed()
+            }
+
         }
     }
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
     }
+    fun configureDatabase(qtdP: String?, idTxt: String?) {
+        val user = FirebaseAuth.getInstance().currentUser
+        database = FirebaseDatabase.getInstance().reference.child("")
+
+        user?.let {
+            var id = user.email.toString()
+            database?.let {
+
+
+                val prod = CarrinhoProduto(idUser = id, idProduto = idTxt, qtd = qtdP)
+                it?.child("user").parent
+                val newProduct = it?.child("user")?.push()
+                prod.id = newProduct?.key
+                newProduct?.setValue(prod)
+            }
+        }
+
+
+    }
+
+
 }
