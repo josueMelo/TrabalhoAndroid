@@ -5,4 +5,11 @@ data class CarrinhoProduto(
     var idProduto: String? = null,
     var idUser: String? = null,
     var qtd: String? = null
-)
+){
+    constructor() : this(
+        id = "",
+        idProduto = "",
+        idUser = "",
+        qtd = ""
+    )
+}
