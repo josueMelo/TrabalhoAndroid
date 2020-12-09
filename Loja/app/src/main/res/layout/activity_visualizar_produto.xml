@@ -14,9 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginBottom="12dp"
-        android:editable="false"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="none"
+        android:enabled="false"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -81,7 +81,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textDescProduto"
+            android:id="@+id/txtDescProduto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"

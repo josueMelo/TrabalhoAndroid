@@ -1,22 +1,18 @@
 package com.hjry.loja.activity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.widget.SearchView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.hjry.loja.Nav
 import com.hjry.loja.R
+import com.hjry.loja.adapter.CarrinhoRecyclerViewAdapter
 import com.hjry.loja.adapter.ProdutosRecyclerViewAdapter
 import com.hjry.loja.model.Produto
+import kotlinx.android.synthetic.main.activity_carrinho.*
 import kotlinx.android.synthetic.main.activity_lista_produto.*
 
 class CarrinhoActivity : AppCompatActivity() {
@@ -28,33 +24,30 @@ class CarrinhoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_carrinho)
-    }
-}
-//
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//        toggle = ActionBarDrawerToggle(
-//            this, DL,
-//            R.string.Open, R.string.Close
-//        )
-//        toggle?.let {
-//            DL.addDrawerListener(it)
-//            it.syncState()
-//        }
-//        NV.setNavigationItemSelectedListener {
-//            DL.closeDrawers()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toggle = ActionBarDrawerToggle(
+            this, DLCarrinho,
+            R.string.Open, R.string.Close
+        )
+        toggle?.let {
+            DLCarrinho.addDrawerListener(it)
+            it.syncState()
+        }
+
+//        NVCarrinho.setNavigationItemSelectedListener {
+//            DLCarrinho.closeDrawers()
 //            if (it.itemId == R.id.Cell) {
 //                val frag = Nav.newInstance("", "")
-//                supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+//                supportFragmentManager.beginTransaction().replace(R.id.fragCarrinho, frag).commit()
 //
 //                true
 //            }
 //            false
 //        }
-//
-//
-//
-//        configureDatabase("")
 
+        //configureDatabase("")
+
+    }
 
 //    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 //val inflater: MenuInflater = menuInflater
@@ -62,17 +55,6 @@ class CarrinhoActivity : AppCompatActivity() {
 //val menuitem = menu?.findItem(R.id.btnCarrinho) as MenuItem
 //val menuIte = menu?.findItem(R.id.about) as MenuItem
 
-//val btnBusca = menuitem.actionView as SearchView
-
-//        btnBusca.queryHint = getString(R.string.NameProduct)
-//
-//        btnBusca.setOnQueryTextListener(object
-//            : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                btnBusca.clearFocus()
-//                configureDatabase(query)
-//                return true
-//            }
 
 //            override fun onQueryTextChange(newText: String?): Boolean {
 //                configureDatabase(newText)
@@ -91,7 +73,7 @@ class CarrinhoActivity : AppCompatActivity() {
 //        return true
 //    }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        //    override fun onOptionsItemSelected(item: MenuItem): Boolean {
 //
 //
 //        toggle?.let {
@@ -101,33 +83,33 @@ class CarrinhoActivity : AppCompatActivity() {
 //    }
 //
 //
-//    fun configureDatabase(busca: String?) {
-//
-//        database = FirebaseDatabase.getInstance().reference.child("produtos")
-//        Log.d("debug", "" + database)
-//
-//
-//        database?.let {
-//            val options = FirebaseRecyclerOptions.Builder<Produto>()
-//                .setQuery(
-//                    it.orderByChild("nome").startAt(busca).endAt(busca + "\uf8ff"),
-//                    Produto::class.java
-//                )
-//                .build()
-//            adapter = ProdutosRecyclerViewAdapter(options)
-//            recyclerView.layoutManager = LinearLayoutManager(this)
-//            recyclerView.adapter = adapter
-//            adapter?.startListening()
-//        }
-//    }
-//
-//    override fun onStop() {
-//        super.onStop()
-//        adapter?.stopListening()
-//    }
-//
-//    override fun onResume() {
-//        super.onResume()
-//        adapter?.startListening()
-//    }
-//}
+    fun configureDatabase(busca: String?) {
+
+        database = FirebaseDatabase.getInstance().reference.child("produtos")
+        Log.d("debug", "" + database)
+
+
+        database?.let {
+            val options = FirebaseRecyclerOptions.Builder<Produto>()
+                .setQuery(
+                    it.orderByChild("nome").startAt(busca).endAt(busca + "\uf8ff"),
+                    Produto::class.java
+                )
+                .build()
+            adapter = CarrinhoRecyclerViewAdapter(options)
+            RVCarrinho.layoutManager = LinearLayoutManager(this)
+            RVCarrinho.adapter = adapter
+            adapter?.startListening()
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        adapter?.stopListening()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        adapter?.startListening()
+    }
+}

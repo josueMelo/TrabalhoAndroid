@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.hjry.loja.R
+import com.hjry.loja.activity.CarrinhoActivity
 import com.hjry.loja.activity.ListaProdutoActivity
 import com.hjry.loja.activity.VisualizarProduto
 import com.hjry.loja.model.Produto
@@ -18,11 +19,10 @@ import kotlinx.android.synthetic.main.cartao_lista_produto.view.*
 import kotlinx.android.synthetic.main.cartao_lista_produto.view.txtNome
 import java.text.NumberFormat
 
-//todo 40m
-class ProdutosRecyclerViewAdapter(options: FirebaseRecyclerOptions<Produto>) :
-    FirebaseRecyclerAdapter<Produto, ProdutosRecyclerViewAdapter.ProdutoViewHolder>(options) {
+class CarrinhoRecyclerViewAdapter (options: FirebaseRecyclerOptions<Produto>) :
+    FirebaseRecyclerAdapter<Produto, CarrinhoRecyclerViewAdapter.CarrinhoViewHolder>(options) {
 
-    class ProdutoViewHolder(
+    class CarrinhoViewHolder(
         override val containerView: View,
     ) :
         RecyclerView.ViewHolder(containerView),
@@ -41,8 +41,8 @@ class ProdutosRecyclerViewAdapter(options: FirebaseRecyclerOptions<Produto>) :
 
             containerView.setOnClickListener {
 
-                val activity = itemView.context as ListaProdutoActivity
-                val i= Intent(activity, VisualizarProduto::class.java)
+                val activity = itemView.context as CarrinhoActivity
+                val i= Intent(activity, CarrinhoActivity::class.java)
 
                 i.putExtra("title", produto.nome.toString())
                 i.putExtra("desc", produto.desc.toString())
@@ -57,13 +57,13 @@ class ProdutosRecyclerViewAdapter(options: FirebaseRecyclerOptions<Produto>) :
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProdutoViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarrinhoViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val cardItem = inflater.inflate(R.layout.cartao_lista_produto, parent, false)
-        return ProdutoViewHolder(cardItem)
+        val cardItem = inflater.inflate(R.layout.cartao_lista_carrinho, parent, false)
+        return CarrinhoViewHolder(cardItem)
     }
 
-    override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int, produto: Produto) {
+    override fun onBindViewHolder(holder: CarrinhoViewHolder, position: Int, produto: Produto) {
         holder.bind(produto)
     }
 }

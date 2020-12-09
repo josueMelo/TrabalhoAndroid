@@ -1,5 +1,6 @@
 package com.hjry.loja.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.hjry.loja.R
@@ -26,14 +27,14 @@ class VisualizarProduto : AppCompatActivity() {
         val desc = intent.getStringExtra("desc")
         val estoque = intent.getStringExtra("estoque")
         val preco = intent.getStringExtra("preco")
-        val desconto = intent.getStringExtra("desconto")
+        val desco = intent.getStringExtra("desconto")
         var i = 1
 
         etQnt.setText(i.toString())
         txtNomeVisualizar.text = title
-        textDescProduto.text = desc
+        txtDescProduto.text = desc
         txtPrecoVisualizar.text = formatter.format(preco!!.toFloat())
-        txtDescontoVisualizar.text = "desconto"
+        txtDescontoVisualizar.text = desco
         txtQtd.text = estoque
         Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/projetopdm-3d833.appspot.com/o/photos%2F" + id + ".jpg?alt=media").into(
             imageProduto
@@ -53,6 +54,11 @@ class VisualizarProduto : AppCompatActivity() {
                 etQnt.setText((i).toString())
                 btnAdd.setText("Add R$" + (Integer.parseInt(etQnt.text.toString()) * preco.toFloat()))
             }
+        }
+
+        btnAdd.setOnClickListener {
+            val intent = Intent(this, CarrinhoActivity::class.java)
+            startActivity(intent)
         }
     }
     override fun onSupportNavigateUp(): Boolean {
