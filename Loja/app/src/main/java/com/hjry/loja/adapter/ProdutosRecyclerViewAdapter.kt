@@ -9,7 +9,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.hjry.loja.R
 import com.hjry.loja.activity.ListaProdutoActivity
-import com.hjry.loja.activity.VisualizarProduto
+import com.hjry.loja.activity.VisualizarProdutoActivity
 import com.hjry.loja.model.Produto
 import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
@@ -39,7 +39,7 @@ class ProdutosRecyclerViewAdapter(options: FirebaseRecyclerOptions<Produto>) :
             containerView.setOnClickListener {
 
                 val activity = itemView.context as ListaProdutoActivity
-                val i= Intent(activity, VisualizarProduto::class.java)
+                val i= Intent(activity, VisualizarProdutoActivity::class.java)
 
                 i.putExtra("title", produto.nome.toString())
                 i.putExtra("desc", produto.desc.toString())

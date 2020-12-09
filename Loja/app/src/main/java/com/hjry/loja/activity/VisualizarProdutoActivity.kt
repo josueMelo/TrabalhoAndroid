@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_visualizar_produto.*
 import kotlinx.android.synthetic.main.cartao_lista_produto.view.*
 import java.text.NumberFormat
 
-class VisualizarProduto : AppCompatActivity() {
+class VisualizarProdutoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,6 +28,7 @@ class VisualizarProduto : AppCompatActivity() {
         val estoque = intent.getStringExtra("estoque")
         val preco = intent.getStringExtra("preco")
         val desco = intent.getStringExtra("desconto")
+
         var i = 1
 
         etQnt.setText(i.toString())
@@ -45,7 +46,7 @@ class VisualizarProduto : AppCompatActivity() {
             if (Integer.parseInt(etQnt.text.toString()) > 1) {
                 i = Integer.parseInt(etQnt.text.toString()) - 1
                 etQnt.setText((i).toString())
-                btnAdd.setText("Add R$" + (Integer.parseInt(etQnt.text.toString()) * preco.toFloat()))
+                btnAdd.text = "Add R$" + (Integer.parseInt(etQnt.text.toString()) * preco.toFloat())
             }
         }
         btnPlus.setOnClickListener {
@@ -58,6 +59,7 @@ class VisualizarProduto : AppCompatActivity() {
 
         btnAdd.setOnClickListener {
             val intent = Intent(this, CarrinhoActivity::class.java)
+//            intent.putExtra("produto", produto)
             startActivity(intent)
         }
     }

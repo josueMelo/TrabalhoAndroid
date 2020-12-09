@@ -20,11 +20,14 @@ class CarrinhoActivity : AppCompatActivity() {
     var adapter: CarrinhoRecyclerViewAdapter? = null
     var database: DatabaseReference? = null
     var toggle: ActionBarDrawerToggle? = null
+    var prod: Produto? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_carrinho)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        // vai receber um produtto do intent
+        configureDatabase(prod?.nome)
         toggle = ActionBarDrawerToggle(
             this, DLCarrinho,
             R.string.Open, R.string.Close
@@ -73,7 +76,7 @@ class CarrinhoActivity : AppCompatActivity() {
 //        return true
 //    }
 
-        //    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    //    override fun onOptionsItemSelected(item: MenuItem): Boolean {
 //
 //
 //        toggle?.let {

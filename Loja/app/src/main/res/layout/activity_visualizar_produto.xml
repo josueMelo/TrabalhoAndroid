@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.VisualizarProduto">
+    tools:context=".activity.VisualizarProdutoActivity">
 
     <EditText
         android:id="@+id/etQnt"
