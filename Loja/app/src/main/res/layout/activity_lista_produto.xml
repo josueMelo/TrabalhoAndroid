@@ -27,8 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:headerLayout="@layout/menu_cabecalho"
-        android:layout_gravity="start"
-        app:menu="@menu/menu" >
+        android:layout_gravity="start" >
 
     </com.google.android.material.navigation.NavigationView>
 
