@@ -28,16 +28,17 @@ class CarrinhoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_carrinho)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        toggle = ActionBarDrawerToggle(
-            this, containerCarrinho,
-            R.string.Open, R.string.Close
-        )
+
         toggle?.let {
             containerCarrinho.addDrawerListener(it)
             it.syncState()
         }
         configureDatabase()
 
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
     fun configureDatabase() {
 
