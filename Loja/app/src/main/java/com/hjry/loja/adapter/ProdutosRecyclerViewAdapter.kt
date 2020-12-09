@@ -13,12 +13,9 @@ import com.hjry.loja.activity.VisualizarProduto
 import com.hjry.loja.model.Produto
 import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.cartao_lista_carrinho.view.*
 import kotlinx.android.synthetic.main.cartao_lista_produto.view.*
-import kotlinx.android.synthetic.main.cartao_lista_produto.view.txtNome
 import java.text.NumberFormat
 
-//todo 40m
 class ProdutosRecyclerViewAdapter(options: FirebaseRecyclerOptions<Produto>) :
     FirebaseRecyclerAdapter<Produto, ProdutosRecyclerViewAdapter.ProdutoViewHolder>(options) {
 
@@ -32,11 +29,11 @@ class ProdutosRecyclerViewAdapter(options: FirebaseRecyclerOptions<Produto>) :
 
         fun bind(produto: Produto) {
 
-            containerView.txtNome.text = produto.nome
-            containerView.txtDesc.text = produto.desc
-            containerView.txtPreco.text = formatter.format(produto.preco)
+            containerView.txtNomeProd.text = produto.nome
+            containerView.txtDescProd.text = produto.desc
+            containerView.txtPrecoProd.text = formatter.format(produto.preco)
             Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/projetopdm-3d833.appspot.com/o/photos%2F" + produto.id + ".jpg?alt=media").into(
-                containerView.image
+                containerView.imageProd
             )
 
             containerView.setOnClickListener {

@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_lista_produto.*
 
 class CarrinhoActivity : AppCompatActivity() {
 
-    var adapter: ProdutosRecyclerViewAdapter? = null
+    var adapter: CarrinhoRecyclerViewAdapter? = null
     var database: DatabaseReference? = null
     var toggle: ActionBarDrawerToggle? = null
 
